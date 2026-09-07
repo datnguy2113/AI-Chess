@@ -1,6 +1,9 @@
 package com.example.chessEngine.ChessLogic;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTest {
@@ -105,8 +108,37 @@ public class BoardTest {
         assertFalse(board.verifyAdjacent(i, j, i, j + 2));
       }
     }
-
-
   }
+
+  @Test
+  public void verifyHorizontalTest() {
+    Board board = new Board();
+
+    // Check if different row
+    assertFalse(board.verifyHorizontal(0, 1, 2, 1));
+
+    for (int i = 0; i < this.ROW; i++) {
+      for (int j = 0; j < this.COL; j++) {
+
+        // Test all cell on the same row
+        for (int k = 0; k < this.COL; k++) {
+          if (k != j) {
+            assertTrue(board.verifyHorizontal(i, j, i, k));
+          }
+        }
+
+        // Invalid if there is a piece between
+        for (int k = 0; k < j - 1; k++) {
+          for (int m = k + 1; m < j; m++) {
+            board.setPiece(i, m, new Pawn(i, m, true));
+            assertFalse(board.verifyHorizontal(i, k, i, j));
+            board.setPiece(i, m, null);
+          }
+        }
+      }
+    }
+  }
+
+
 
 }
