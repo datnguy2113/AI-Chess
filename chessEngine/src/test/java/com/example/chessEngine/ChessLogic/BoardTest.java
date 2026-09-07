@@ -68,4 +68,18 @@ public class BoardTest {
     assertTrue(board.verifySourceAndDestination(VALID_BOUND, VALID_BOUND, DEFAULT_ROW, DEFAULT_COL, true));
   }
 
+
+  @Test
+  public void clearTest() {
+    Board board = new Board();
+    BoardInitializer.initialize(board);
+
+    board.clear();
+    for (int i = 0; i < this.ROW; i++) {
+      for (int j = 0; j < this.COL; j++) {
+        assertNull(board.getPiece(i, j));
+      }
+    }
+  }
+
 }
