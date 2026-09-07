@@ -11,6 +11,14 @@ public class Board {
     private final int ROWS = 8;
     private final int COLS = 8;
 
+    public int getROWS() {
+      return this.ROWS;
+    }
+
+    public int getCOLS() {
+      return this.COLS;
+    }
+
     public static Board parse(String[][] parse) {
         Board board = new Board();
         int nRows = 8;
