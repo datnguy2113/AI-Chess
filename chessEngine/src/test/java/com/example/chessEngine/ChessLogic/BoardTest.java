@@ -15,4 +15,13 @@ public class BoardTest {
     assertEquals(board.getCOLS(), COL);
   }
 
+  @Test
+  public void setPieceTest() {
+    Board board = new Board();
+    Piece piece = new Rook(0, 0, true);
+    board.setPiece(0, 0, piece);
+
+    assertEquals(piece, board.getPiece(0, 0));
+  }
+
 }
