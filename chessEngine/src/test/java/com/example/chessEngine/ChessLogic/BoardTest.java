@@ -139,6 +139,35 @@ public class BoardTest {
     }
   }
 
+  @Test
+  public void cloneTest() {
+    Board board = new Board();
+    BoardInitializer.initialize(board);
+    Board clone = board.clone();
+
+    for (int i = 0; i < ROW; i++) {
+      for (int j = 0; j < COL; j++) {
+        Piece origin = board.getPiece(i, j);
+        Piece cloneVersion = clone.getPiece(i, j);
+        if (origin == null && cloneVersion != null) {
+          fail();
+        }
+        if (origin != null && cloneVersion == null) {
+          fail();
+        }
+        if (origin != null && cloneVersion != null) {
+          boolean isTheSame = (origin.isBlack == cloneVersion.isBlack)
+              && (origin.row == cloneVersion.row)
+              && (origin.col == cloneVersion.col)
+              && (origin.type.equals(cloneVersion.type))
+              && (origin.representation == cloneVersion.representation);
+          assertTrue(isTheSame);
+        }
+      }
+    }
+
+  }
+
 
 
 }
