@@ -165,7 +165,34 @@ public class BoardTest {
         }
       }
     }
+  }
 
+  @Test
+  public void verifyVerticalTest() {
+    Board board = new Board();
+
+    // Check if different row
+    assertFalse(board.verifyVertical(0, 2, 5, 1));
+
+    for (int j = 0; j < this.COL; j++) {
+      for (int i = 0; i < this.ROW; i++) {
+
+        // Test all cell on the same column
+        for (int k = 0; k < this.ROW; k++) {
+          if (k != i) {
+            assertTrue(board.verifyVertical(i, j, k, j));
+          }
+        }
+        // Invalid if there is a piece between
+        for (int k = 0; k < i - 1; k++) {
+          for (int m = k + 1; m < i; m++) {
+            board.setPiece(m, j, new Pawn(m, j, true));
+            assertFalse(board.verifyVertical(k, j, i, j));
+            board.setPiece(m, j, null);
+          }
+        }
+      }
+    }
   }
 
 
