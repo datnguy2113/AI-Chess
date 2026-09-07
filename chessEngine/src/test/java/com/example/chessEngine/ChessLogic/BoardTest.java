@@ -82,4 +82,31 @@ public class BoardTest {
     }
   }
 
+  @Test
+  public void verifyAdjacentTest() {
+    Board board = new Board();
+
+    for (int i = 0; i < this.ROW; i++) {
+      for (int j = 0; j < this.COL; j++) {
+
+        // up and down
+        assertTrue(board.verifyAdjacent(i, j, i - 1, j));
+        assertTrue(board.verifyAdjacent(i, j, i + 1, j));
+
+        // left and right
+        assertTrue(board.verifyAdjacent(i, j, i, j - 1));
+        assertTrue(board.verifyAdjacent(i, j, i, j + 1));
+
+        // Not adjacent test
+        assertFalse(board.verifyAdjacent(i, j, i - 2, j));
+        assertFalse(board.verifyAdjacent(i, j, i + 2, j));
+
+        assertFalse(board.verifyAdjacent(i, j, i, j - 2));
+        assertFalse(board.verifyAdjacent(i, j, i, j + 2));
+      }
+    }
+
+
+  }
+
 }
