@@ -1,1 +1,1 @@
-# Automated-Chess-Player
+# AI Chess
