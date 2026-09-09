@@ -19,8 +19,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin({"http://localhost:5173",
-              "https://flourishing-beijinho-e3811c.netlify.app/",
-              "https://automated-chess-player-1.onrender.com"
+              "https://ai-chess-1df4.onrender.com/"
 })
 public class GameController {
 
