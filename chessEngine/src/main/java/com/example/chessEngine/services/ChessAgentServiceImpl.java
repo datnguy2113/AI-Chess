@@ -25,7 +25,7 @@ public class ChessAgentServiceImpl implements ChessAgentService{
 
 
     public ChessAgentServiceImpl(OpenAiChatModel openAiChatModel, AnthropicChatModel anthropicChatModel) {
-      ChatMemory openAiChatMemory = MessageWindowChatMemory.builder().maxMessages(100).build();
+      ChatMemory openAiChatMemory = MessageWindowChatMemory.builder().maxMessages(500).build();
       this.openAiChatClient = ChatClient.builder(openAiChatModel)
           .defaultAdvisors(MessageChatMemoryAdvisor.builder(openAiChatMemory).build())
           .build();
