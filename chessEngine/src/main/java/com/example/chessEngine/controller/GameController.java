@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin({"http://localhost:5173",
-              "https://ai-chess-1df4.onrender.com/"
+              "https://ai-chess-1df4.onrender.com"
 })
 public class GameController {
 
