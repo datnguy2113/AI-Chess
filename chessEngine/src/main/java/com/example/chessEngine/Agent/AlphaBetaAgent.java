@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class AlphaBetaAgent extends Agent {
 
-  public int depth = 4;
+  public int depth = 2;
 
   public AlphaBetaAgent(String name, boolean isMyPieceBlack) {
     super.name = name;
