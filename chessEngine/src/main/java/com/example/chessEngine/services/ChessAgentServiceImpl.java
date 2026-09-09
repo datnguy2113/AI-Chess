@@ -29,7 +29,10 @@ public class ChessAgentServiceImpl implements ChessAgentService{
       this.openAiChatClient = ChatClient.builder(openAiChatModel)
           .defaultAdvisors(MessageChatMemoryAdvisor.builder(openAiChatMemory).build())
           .build();
-      this.claudeChatClient = ChatClient.create(anthropicChatModel);
+      ChatMemory claudeChatMemory = MessageWindowChatMemory.builder().maxMessages(500).build();
+      this.claudeChatClient = ChatClient.builder(anthropicChatModel)
+          .defaultAdvisors(MessageChatMemoryAdvisor.builder(claudeChatMemory).build())
+          .build();
 
       this.blackAgents.put(AgentName.RANDOM, new RandomAgent(AgentName.RANDOM, true));
       this.blackAgents.put(AgentName.CHATGPT, new ChatGptAgent(AgentName.CHATGPT, openAiChatClient, true));
