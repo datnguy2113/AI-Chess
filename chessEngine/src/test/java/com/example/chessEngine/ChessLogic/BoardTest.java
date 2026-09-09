@@ -140,11 +140,6 @@ public class BoardTest {
   }
 
   @Test
-  public void failTest() {
-    fail();
-  }
-
-  @Test
   public void cloneTest() {
     Board board = new Board();
     BoardInitializer.initialize(board);
