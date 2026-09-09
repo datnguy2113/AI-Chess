@@ -1,4 +1,4 @@
-export type Player = "Claude" | "ChatGPT" | "Human" | "Random" | "Alpha-Beta";
+export type Player = "ChatGPT" | "Human" | "Random" | "Alpha-Beta";
 
 export type option = {
     name: Player,
@@ -14,10 +14,6 @@ export const playerTheme = {
 };
 
 const options: option[] = [
-    {
-        name: "Claude",
-        desc: "This agent make a move based on Claude Opus-4.8 model"
-    },
     {
         name: "ChatGPT",
         desc: "This agent make a move based on OpenAi gpt-5.6-luna model"
