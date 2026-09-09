@@ -53,7 +53,7 @@ public class ChessAgentServiceImpl implements ChessAgentService{
         if (agent == null) {
             throw new AgentNotFoundException();
         }
-        int[] move = agent.getName().equals(AgentName.CHATGPT) ?  agent.makeMove(state, conversationId) : agent.makeMove(state);
+        int[] move = (agent.getName().equals(AgentName.CHATGPT) || agent.getName().equals(AgentName.CLAUDE)) ?  agent.makeMove(state, conversationId) : agent.makeMove(state);
         return move;
     }
 
