@@ -19,29 +19,22 @@ import java.util.Map;
 public class ChessAgentServiceImpl implements ChessAgentService{
 
     private final ChatClient openAiChatClient;
-    private final ChatClient claudeChatClient;
     private final Map<String, Agent> blackAgents = new HashMap<>();
     private final Map<String, Agent> whiteAgents = new HashMap<>();
 
 
-    public ChessAgentServiceImpl(OpenAiChatModel openAiChatModel, AnthropicChatModel anthropicChatModel) {
+    public ChessAgentServiceImpl(OpenAiChatModel openAiChatModel) {
       ChatMemory openAiChatMemory = MessageWindowChatMemory.builder().maxMessages(500).build();
       this.openAiChatClient = ChatClient.builder(openAiChatModel)
           .defaultAdvisors(MessageChatMemoryAdvisor.builder(openAiChatMemory).build())
           .build();
-      ChatMemory claudeChatMemory = MessageWindowChatMemory.builder().maxMessages(500).build();
-      this.claudeChatClient = ChatClient.builder(anthropicChatModel)
-          .defaultAdvisors(MessageChatMemoryAdvisor.builder(claudeChatMemory).build())
-          .build();
 
       this.blackAgents.put(AgentName.RANDOM, new RandomAgent(AgentName.RANDOM, true));
       this.blackAgents.put(AgentName.CHATGPT, new ChatGptAgent(AgentName.CHATGPT, openAiChatClient, true));
-      this.blackAgents.put(AgentName.CLAUDE, new ClaudeAgent(AgentName.CLAUDE, claudeChatClient,true));
       this.blackAgents.put(AgentName.ALPHA_BETA, new AlphaBetaAgent(AgentName.ALPHA_BETA, true));
 
       this.whiteAgents.put(AgentName.RANDOM, new RandomAgent(AgentName.RANDOM, false));
       this.whiteAgents.put(AgentName.CHATGPT, new ChatGptAgent(AgentName.CHATGPT, openAiChatClient, false));
-      this.whiteAgents.put(AgentName.CLAUDE, new ClaudeAgent(AgentName.CLAUDE, claudeChatClient,false));
       this.whiteAgents.put(AgentName.ALPHA_BETA, new AlphaBetaAgent(AgentName.ALPHA_BETA, false));
 
     }
@@ -53,7 +46,7 @@ public class ChessAgentServiceImpl implements ChessAgentService{
         if (agent == null) {
             throw new AgentNotFoundException();
         }
-        int[] move = (agent.getName().equals(AgentName.CHATGPT) || agent.getName().equals(AgentName.CLAUDE)) ?  agent.makeMove(state, conversationId) : agent.makeMove(state);
+        int[] move = agent.getName().equals(AgentName.CHATGPT) ?  agent.makeMove(state, conversationId) : agent.makeMove(state);
         return move;
     }
 
