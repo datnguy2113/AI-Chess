@@ -23,12 +23,12 @@ import java.util.UUID;
 })
 public class GameController {
 
-    private final BoardStateService boardStateService;
+//    private final BoardStateService boardStateService;
     private final ChessAgentService chessAgentService;
 
     @Autowired
-    public GameController(BoardStateService boardStateService, ChessAgentService chessAgentService) {
-        this.boardStateService = boardStateService;
+    public GameController(ChessAgentService chessAgentService) {
+//        this.boardStateService = boardStateService;
         this.chessAgentService = chessAgentService;
     }
 
@@ -44,13 +44,13 @@ public class GameController {
                         build());
     }
 
-    @GetMapping("/game/{id}")
-    public ResponseEntity<String[][]> getBoardState(@PathVariable  String id) {
-        String[][] state = this.boardStateService.getBoardState(id);
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(state);
-    }
+//    @GetMapping("/game/{id}")
+//    public ResponseEntity<String[][]> getBoardState(@PathVariable  String id) {
+//        String[][] state = this.boardStateService.getBoardState(id);
+//        return ResponseEntity
+//                .status(HttpStatus.OK)
+//                .body(state);
+//    }
 
 
     @PostMapping("/game")
