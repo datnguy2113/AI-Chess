@@ -286,6 +286,7 @@ public class Board {
    */
   public boolean movePiece(int startRow, int startCol, int endRow, int endCol) {
     Piece startPiece = this.board[startRow][startCol];
+    boolean isBlack = startPiece.isBlack;
     if (startPiece == null) {
       return false;
     }
@@ -296,6 +297,9 @@ public class Board {
       return false;
     }
     this.setPiece(startRow, startCol, null);
+    if (startPiece instanceof Pawn && (endRow == 0 || endRow == 7)) {
+      startPiece = new Queen(endRow, endCol, isBlack);
+    }
     this.setPiece(endRow, endCol, startPiece);
     startPiece.setPosition(endRow, endCol);
     return true;
