@@ -195,6 +195,30 @@ public class BoardTest {
     }
   }
 
+  @Test
+  public void testGameOverWhenThereIsNoKing() {
+    Board board = new Board();
+    assertTrue(board.isGameOver());
+  }
+
+
+  @Test
+  public void testGameOverWhenThereIsOneKing() {
+    Board board = new Board();
+    board.setPiece(0, 0, new King(0, 0, true));
+    assertTrue(board.isGameOver());
+  }
+
+  @Test
+  public void testGameNotOver() {
+    Board board = new Board();
+    board.setPiece(0, 0, new King(0, 0, true));
+    board.setPiece(1, 1, new King(1, 1, false));
+    assertFalse(board.isGameOver());
+  }
+
+
+
 
 
 }
