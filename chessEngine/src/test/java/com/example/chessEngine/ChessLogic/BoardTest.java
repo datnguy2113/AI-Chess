@@ -308,6 +308,13 @@ public class BoardTest {
   }
 
 
+  @Test
+  public void testMoveNullPiece() {
+    Board board = new Board();
+    assertFalse(board.movePiece(0, 0, 0, 0));
+  }
+
+
 
 
 
