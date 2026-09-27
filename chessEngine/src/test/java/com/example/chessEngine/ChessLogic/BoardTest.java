@@ -384,9 +384,27 @@ public class BoardTest {
         }
       }
     }
-    
+  }
 
-
+  @Test
+  public void testPieceBetweenDiagonal() {
+    Board board = new Board();
+    for (int i = 0; i < ROW; i++) {
+      for (int j = 0; j < COL; j++) {
+        int step = 1;
+        int i_prime = i + step;
+        int j_prime = j + step;
+        while (i_prime < ROW && j_prime < COL) {
+          if (i_prime - i > 1 && j_prime - j > 1) {
+            board.setPiece(i_prime - 1, j_prime - 1, new Pawn(i_prime - 1, j_prime - 1, true));
+            assertFalse(board.verifyDiagonal(i, j, i_prime, j_prime));
+            board.clear();
+          }
+          i_prime += step;
+          j_prime += step;
+        }
+      }
+    }
   }
 
 
