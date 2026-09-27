@@ -314,6 +314,17 @@ public class BoardTest {
     assertFalse(board.movePiece(0, 0, 0, 0));
   }
 
+  @Test
+  public void testMoveIllegalPiece() {
+    Board board = new Board();
+    board.setPiece(0, 0, new Pawn(0, 0, true));
+    board.setPiece(1, 1, new Bishop(1, 1, true));
+    assertFalse(board.movePiece(1, 1, 0, 0));
+  }
+
+
+
+
 
 
 
