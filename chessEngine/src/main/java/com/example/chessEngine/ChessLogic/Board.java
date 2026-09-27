@@ -333,8 +333,7 @@ public class Board {
     }
   }
 
-
-  public Map<String, List<int[]>> getLegalMoves(boolean isBlack) {
+  public List<Piece> getPieceForSide(boolean isBlack) {
     List<Piece> pieces = new ArrayList<>();
 
     for (int i = 0; i < this.ROWS; i++) {
@@ -345,7 +344,11 @@ public class Board {
         }
       }
     }
+    return pieces;
+  }
 
+  public Map<String, List<int[]>> getLegalMoves(boolean isBlack) {
+    List<Piece> pieces = getPieceForSide(isBlack);
 
     Map<String, List<int[]>> movesMap = new HashMap<>();
     for (int i = 0; i < this.ROWS; i++) {
