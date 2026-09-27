@@ -1,9 +1,6 @@
 package com.example.chessEngine.ChessLogic;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Board {
   // Instance variables (add more if you need)
@@ -286,10 +283,10 @@ public class Board {
    */
   public boolean movePiece(int startRow, int startCol, int endRow, int endCol) {
     Piece startPiece = this.board[startRow][startCol];
-    boolean isBlack = startPiece.isBlack;
     if (startPiece == null) {
       return false;
     }
+    boolean isBlack = startPiece.isBlack;
     if (!verifySourceAndDestination(startRow, startCol, endRow, endCol, startPiece.isBlack)) {
       return false;
     }
