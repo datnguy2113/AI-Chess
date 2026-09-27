@@ -32,6 +32,7 @@ public class ChatGptAgent extends Agent{
             .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, conversationId))
             .call().content();
         String[] moves = response.split(",");
+        System.out.println("Move is " +  Integer.parseInt(moves[0]) + " " +  Integer.parseInt(moves[1]) + " " + Integer.parseInt(moves[2]) + " " + Integer.parseInt(moves[3]));
         return new int[] {
             Integer.parseInt(moves[0]),
             Integer.parseInt(moves[1]),
