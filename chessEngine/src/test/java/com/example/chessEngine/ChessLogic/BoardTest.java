@@ -330,6 +330,13 @@ public class BoardTest {
   }
 
   @Test
+  public void testIllegalMove() {
+    Board board = new Board();
+    board.setPiece(1, 0, new Pawn(1, 0, true));
+    assertFalse(board.movePiece(1, 0, 4, 0));
+  }
+
+  @Test
   public void testPawnPromotion() {
     Board board = new Board();
     board.setPiece(1, 0, new Pawn(1, 0, false));
@@ -340,6 +347,20 @@ public class BoardTest {
     board.setPiece(6, 0, new Pawn(6, 0, true));
     board.movePiece(6, 0, 7, 0);
     assertTrue(board.getPiece(7, 0).representation == PieceRepresentation.BLACK_QUEEN_CODE);
+  }
+
+
+  @Test
+  public void testInitialState() {
+    Board board = new Board();
+    BoardInitializer.initialize(board);
+
+    Character[][] state = board.getState();
+    for (int i = 0; i < ROW; i++) {
+      for (int j = 0; j < COL; j++) {
+        assertEquals(state[i][j], BoardInitializer.characterConfig[i][j]);
+      }
+    }
   }
 
 
