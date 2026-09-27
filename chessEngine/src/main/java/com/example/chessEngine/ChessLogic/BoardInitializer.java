@@ -1,6 +1,7 @@
 package com.example.chessEngine.ChessLogic;
 
 
+import java.util.Random;
 
 public final class BoardInitializer {
 
@@ -31,6 +32,27 @@ public final class BoardInitializer {
       {WP, WP, WP, WP, WP, WP, WP, WP},
       {WR, WN, WB, WQ, WK, WB, WN, WR},
   };
+
+  public static Piece getRandomPiece(int row, int col, boolean isBlack) {
+    Random rand = new Random();
+    int number = rand.nextInt(7);
+    if (number == 1) {
+      return new Pawn(row, col, isBlack);
+    }
+    if (number == 2) {
+      return new Knight(row, col, isBlack);
+    }
+    if (number == 3) {
+      return new Bishop(row, col, isBlack);
+    }
+    if (number == 4) {
+      return new Queen(row, col, isBlack);
+    }
+    if (number == 5) {
+      return new Rook(0, 0, isBlack);
+    }
+    return new Queen(0, 0, isBlack);
+  }
 
   public static void initialize(Board board) {
 
@@ -65,4 +87,8 @@ public final class BoardInitializer {
       }
     }
   }
+
+
+
+
 }
