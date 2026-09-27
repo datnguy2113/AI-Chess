@@ -33,6 +33,17 @@ public final class BoardInitializer {
       {WR, WN, WB, WQ, WK, WB, WN, WR},
   };
 
+  public static final Character[][] characterConfig = {
+      {PieceRepresentation.BLACK_ROOK_CODE, PieceRepresentation.BLACK_KNIGHT_CODE, PieceRepresentation.BLACK_BISHOP_CODE, PieceRepresentation.BLACK_QUEEN_CODE, PieceRepresentation.BLACK_KING_CODE, PieceRepresentation.BLACK_BISHOP_CODE, PieceRepresentation.BLACK_KNIGHT_CODE, PieceRepresentation.BLACK_ROOK_CODE},
+      {PieceRepresentation.BLACK_PAWN_CODE, PieceRepresentation.BLACK_PAWN_CODE, PieceRepresentation.BLACK_PAWN_CODE, PieceRepresentation.BLACK_PAWN_CODE, PieceRepresentation.BLACK_PAWN_CODE, PieceRepresentation.BLACK_PAWN_CODE, PieceRepresentation.BLACK_PAWN_CODE, PieceRepresentation.BLACK_PAWN_CODE, PieceRepresentation.BLACK_PAWN_CODE,},
+      {null, null, null, null, null, null, null, null },
+      {null, null, null, null, null, null, null, null },
+      {null, null, null, null, null, null, null, null },
+      {null, null, null, null, null, null, null, null },
+      {PieceRepresentation.WHITE_ROOK_CODE, PieceRepresentation.WHITE_KNIGHT_CODE, PieceRepresentation.WHITE_BISHOP_CODE, PieceRepresentation.WHITE_QUEEN_CODE, PieceRepresentation.WHITE_KING_CODE, PieceRepresentation.WHITE_BISHOP_CODE, PieceRepresentation.WHITE_KNIGHT_CODE, PieceRepresentation.WHITE_ROOK_CODE},
+      {PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE,},
+  };
+
 
 
   public static void initialize(Board board) {
