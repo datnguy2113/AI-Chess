@@ -329,6 +329,19 @@ public class BoardTest {
     assertTrue(board.movePiece(1, 0, 2, 0));
   }
 
+  @Test
+  public void testPawnPromotion() {
+    Board board = new Board();
+    board.setPiece(1, 0, new Pawn(1, 0, false));
+    board.movePiece(1, 0, 0, 0);
+    assertTrue(board.getPiece(0, 0).representation == PieceRepresentation.WHITE_QUEEN_CODE);
+
+    board.clear();
+    board.setPiece(6, 0, new Pawn(6, 0, true));
+    board.movePiece(6, 0, 7, 0);
+    assertTrue(board.getPiece(7, 0).representation == PieceRepresentation.BLACK_QUEEN_CODE);
+  }
+
 
 
 
