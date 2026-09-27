@@ -88,7 +88,32 @@ public final class BoardInitializer {
     }
   }
 
+  public static Board generateRandomState(int numBlack, int numWhite) {
+    Board board = new Board();
+    int blackCount = 0;
+    int whiteCount = 0;
+    Random rand = new Random();
+    while (blackCount < numBlack) {
+      int row = rand.nextInt(ROWS);
+      int col = rand.nextInt(COLS);
+      if (board.getPiece(row, col) == null) {
+        Piece piece = getRandomPiece(row, col, true);
+        board.setPiece(row, col, piece);
+        blackCount++;
+      }
+    }
 
+    while (whiteCount < numWhite) {
+      int row = rand.nextInt(ROWS);
+      int col = rand.nextInt(COLS);
+      if (board.getPiece(row, col) == null) {
+        Piece piece = getRandomPiece(row, col, false);
+        board.setPiece(row, col, piece);
+        whiteCount++;
+      }
+    }
+    return board;
+  }
 
 
 }
