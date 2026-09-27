@@ -322,6 +322,14 @@ public class BoardTest {
     assertFalse(board.movePiece(1, 1, 0, 0));
   }
 
+  @Test
+  public void testLegalMove() {
+    Board board = new Board();
+    board.setPiece(1, 0, new Pawn(1, 0, true));
+    assertTrue(board.movePiece(1, 0, 2, 0));
+  }
+
+
 
 
 
