@@ -408,6 +408,22 @@ public class BoardTest {
   }
 
 
+  @Test
+  public void testParse() {
+    Board board = generateRandomState(16, 16);
+    String[][] str = board.getBoardString();
+    Board newBoard = Board.parse(str);
+    for (int i = 0; i < ROW; i++) {
+      for (int j = 0; j < COL; j++) {
+        Piece expect = board.getPiece(i, j);
+        Piece actual = newBoard.getPiece(i, j);
+        if (expect != null && actual != null) {
+          assertEquals(expect.representation, actual.representation);
+        }
+      }
+    }
+  }
+
 
 
 
