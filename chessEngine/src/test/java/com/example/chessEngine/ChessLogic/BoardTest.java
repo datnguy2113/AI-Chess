@@ -219,11 +219,62 @@ public class BoardTest {
     assertFalse(board.isGameOver());
   }
 
+
+  public static Piece getRandomPiece(int row, int col, boolean isBlack) {
+    Random rand = new Random();
+    int number = rand.nextInt(7);
+    if (number == 1) {
+      return new Pawn(row, col, isBlack);
+    }
+    if (number == 2) {
+      return new Knight(row, col, isBlack);
+    }
+    if (number == 3) {
+      return new Bishop(row, col, isBlack);
+    }
+    if (number == 4) {
+      return new Queen(row, col, isBlack);
+    }
+    if (number == 5) {
+      return new Rook(0, 0, isBlack);
+    }
+    return new Queen(0, 0, isBlack);
+  }
+
+  public Board generateRandomState(int numBlack, int numWhite) {
+    Board board = new Board();
+    int blackCount = 0;
+    int whiteCount = 0;
+    Random rand = new Random();
+    while (blackCount < numBlack) {
+      int row = rand.nextInt(ROW);
+      int col = rand.nextInt(COL);
+      if (board.getPiece(row, col) == null) {
+        Piece piece = getRandomPiece(row, col, true);
+        board.setPiece(row, col, piece);
+        blackCount++;
+      }
+    }
+
+    while (whiteCount < numWhite) {
+      int row = rand.nextInt(ROW);
+      int col = rand.nextInt(COL);
+      if (board.getPiece(row, col) == null) {
+        Piece piece = getRandomPiece(row, col, false);
+        board.setPiece(row, col, piece);
+        whiteCount++;
+      }
+    }
+    return board;
+  }
+
+
+
   @Test
-  public void testCountPieceWithTheSameNumberOfPieceForBothSide() {
-    int NUM_BLACK = 16;
+  public void testCountPieceWithDifferentNumberOfPiece() {
+    int NUM_BLACK = 10;
     int NUM_WHITE = 16;
-    Board board = BoardInitializer.generateRandomState(NUM_BLACK, NUM_WHITE);
+    Board board = generateRandomState(NUM_BLACK, NUM_WHITE);
     List<Map<String, Integer>> counts = board.countPiece();
     int numBlack = 0;
     int numWhite = 0;
@@ -239,10 +290,10 @@ public class BoardTest {
 
 
   @Test
-  public void testCountPieceWithDifferentNumberOfPiece() {
-    int NUM_BLACK = 10;
+  public void testCountPieceWithTheSameNumberOfPieceForBothSide() {
+    int NUM_BLACK = 16;
     int NUM_WHITE = 16;
-    Board board = BoardInitializer.generateRandomState(NUM_BLACK, NUM_WHITE);
+    Board board = generateRandomState(NUM_BLACK, NUM_WHITE);
     List<Map<String, Integer>> counts = board.countPiece();
     int numBlack = 0;
     int numWhite = 0;

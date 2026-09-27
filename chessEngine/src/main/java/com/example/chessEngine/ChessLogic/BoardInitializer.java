@@ -33,26 +33,7 @@ public final class BoardInitializer {
       {WR, WN, WB, WQ, WK, WB, WN, WR},
   };
 
-  public static Piece getRandomPiece(int row, int col, boolean isBlack) {
-    Random rand = new Random();
-    int number = rand.nextInt(7);
-    if (number == 1) {
-      return new Pawn(row, col, isBlack);
-    }
-    if (number == 2) {
-      return new Knight(row, col, isBlack);
-    }
-    if (number == 3) {
-      return new Bishop(row, col, isBlack);
-    }
-    if (number == 4) {
-      return new Queen(row, col, isBlack);
-    }
-    if (number == 5) {
-      return new Rook(0, 0, isBlack);
-    }
-    return new Queen(0, 0, isBlack);
-  }
+
 
   public static void initialize(Board board) {
 
@@ -87,33 +68,5 @@ public final class BoardInitializer {
       }
     }
   }
-
-  public static Board generateRandomState(int numBlack, int numWhite) {
-    Board board = new Board();
-    int blackCount = 0;
-    int whiteCount = 0;
-    Random rand = new Random();
-    while (blackCount < numBlack) {
-      int row = rand.nextInt(ROWS);
-      int col = rand.nextInt(COLS);
-      if (board.getPiece(row, col) == null) {
-        Piece piece = getRandomPiece(row, col, true);
-        board.setPiece(row, col, piece);
-        blackCount++;
-      }
-    }
-
-    while (whiteCount < numWhite) {
-      int row = rand.nextInt(ROWS);
-      int col = rand.nextInt(COLS);
-      if (board.getPiece(row, col) == null) {
-        Piece piece = getRandomPiece(row, col, false);
-        board.setPiece(row, col, piece);
-        whiteCount++;
-      }
-    }
-    return board;
-  }
-
 
 }
