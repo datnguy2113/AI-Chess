@@ -424,6 +424,19 @@ public class BoardTest {
     }
   }
 
+  @Test
+  public void testInitialConfigParse() {
+    Board board = new Board();
+    BoardInitializer.initialize(board);
+    for (int i = 0; i < ROW; i++) {
+      for (int j = 0; j < COL; j++) {
+        if (board.getPiece(i, j) != null) {
+          assertTrue(board.getPiece(i, j).type.equals(BoardInitializer.congig[i][j].substring(1)));
+        }
+      }
+    }
+  }
+
 
 
 
