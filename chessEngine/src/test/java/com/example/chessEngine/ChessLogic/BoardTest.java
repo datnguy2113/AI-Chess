@@ -437,7 +437,23 @@ public class BoardTest {
     }
   }
 
+  private String fen = """
+      BR,BN,BB,BQ,BK,BB,BN,BR
+      BP,BP,BP,BP,BP,BP,BP,BP
+      nu,nu,nu,nu,nu,nu,nu,nu
+      nu,nu,nu,nu,nu,nu,nu,nu
+      nu,nu,nu,nu,nu,nu,nu,nu
+      nu,nu,nu,nu,nu,nu,nu,nu
+      WP,WP,WP,WP,WP,WP,WP,WP
+      WR,WN,WB,WQ,WK,WB,WN,WR
+      """;
 
+  @Test
+  public void testFenExtraction() {
+    Board board = new Board();
+    BoardInitializer.initialize(board);
+    assertEquals(fen, board.getFen());
+  }
 
 
 
