@@ -363,6 +363,32 @@ public class BoardTest {
     }
   }
 
+  @Test
+  public void testDiagonal() {
+    Board board = new Board();
+    for (int i = 0; i < ROW; i++) {
+      for (int j = 0; j < COL; j++) {
+        for (int k = 0; k < ROW; k++) {
+          for (int m = 0; m < COL; m++) {
+            if (i != k && j != m) {
+              int dx = Math.abs(m - j);
+              int dy = Math.abs(k - i);
+              if (dx != dy) {
+                assertFalse(board.verifyDiagonal(i, j, k, m));
+              }
+              else {
+                assertTrue(board.verifyDiagonal(i, j, k, m));
+              }
+            }
+          }
+        }
+      }
+    }
+    
+
+
+  }
+
 
 
 
