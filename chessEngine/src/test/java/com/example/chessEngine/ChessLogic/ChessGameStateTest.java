@@ -16,6 +16,7 @@ public class ChessGameStateTest {
     BoardInitializer.initialize(board);
     ChessGameState state = new ChessGameState(white, black, board);
     assertEquals(state.evaluate(black), 0);
+    assertEquals(state.evaluate(white), 0);
 
   }
 }
