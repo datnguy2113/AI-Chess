@@ -2,6 +2,8 @@ package com.example.chessEngine.ChessLogic;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -215,6 +217,43 @@ public class BoardTest {
     board.setPiece(0, 0, new King(0, 0, true));
     board.setPiece(1, 1, new King(1, 1, false));
     assertFalse(board.isGameOver());
+  }
+
+  @Test
+  public void testCountPieceWithTheSameNumberOfPieceForBothSide() {
+    int NUM_BLACK = 16;
+    int NUM_WHITE = 16;
+    Board board = BoardInitializer.generateRandomState(NUM_BLACK, NUM_WHITE);
+    List<Map<String, Integer>> counts = board.countPiece();
+    int numBlack = 0;
+    int numWhite = 0;
+    for (String key: counts.get(0).keySet()) {
+      numBlack += counts.get(0).get(key);
+    }
+    for (String key: counts.get(1).keySet()) {
+      numWhite += counts.get(1).get(key);
+    }
+    assertTrue(numBlack == NUM_BLACK);
+    assertTrue(numWhite == NUM_WHITE);
+  }
+
+
+  @Test
+  public void testCountPieceWithDifferentNumberOfPiece() {
+    int NUM_BLACK = 10;
+    int NUM_WHITE = 16;
+    Board board = BoardInitializer.generateRandomState(NUM_BLACK, NUM_WHITE);
+    List<Map<String, Integer>> counts = board.countPiece();
+    int numBlack = 0;
+    int numWhite = 0;
+    for (String key: counts.get(0).keySet()) {
+      numBlack += counts.get(0).get(key);
+    }
+    for (String key: counts.get(1).keySet()) {
+      numWhite += counts.get(1).get(key);
+    }
+    assertTrue(numBlack == NUM_BLACK);
+    assertTrue(numWhite == NUM_WHITE);
   }
 
 
