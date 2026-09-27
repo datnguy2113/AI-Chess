@@ -40,8 +40,8 @@ public final class BoardInitializer {
       {null, null, null, null, null, null, null, null },
       {null, null, null, null, null, null, null, null },
       {null, null, null, null, null, null, null, null },
-      {PieceRepresentation.WHITE_ROOK_CODE, PieceRepresentation.WHITE_KNIGHT_CODE, PieceRepresentation.WHITE_BISHOP_CODE, PieceRepresentation.WHITE_QUEEN_CODE, PieceRepresentation.WHITE_KING_CODE, PieceRepresentation.WHITE_BISHOP_CODE, PieceRepresentation.WHITE_KNIGHT_CODE, PieceRepresentation.WHITE_ROOK_CODE},
       {PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE, PieceRepresentation.WHITE_PAWN_CODE,},
+      {PieceRepresentation.WHITE_ROOK_CODE, PieceRepresentation.WHITE_KNIGHT_CODE, PieceRepresentation.WHITE_BISHOP_CODE, PieceRepresentation.WHITE_QUEEN_CODE, PieceRepresentation.WHITE_KING_CODE, PieceRepresentation.WHITE_BISHOP_CODE, PieceRepresentation.WHITE_KNIGHT_CODE, PieceRepresentation.WHITE_ROOK_CODE}
   };
 
 
