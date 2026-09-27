@@ -455,6 +455,13 @@ public class BoardTest {
     assertEquals(fen, board.getFen());
   }
 
+  @Test
+  public void testGetPieceForSide() {
+    Board board = generateRandomState(10, 16);
+    List<Piece> pieces = board.getPieceForSide(true);
+    assertEquals(pieces.size(), 10);
+  }
+
 
 
 
