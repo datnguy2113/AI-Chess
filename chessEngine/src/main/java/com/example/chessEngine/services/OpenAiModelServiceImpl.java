@@ -5,8 +5,11 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
+import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OpenAiModelServiceImpl implements AiModelService{
@@ -24,6 +27,11 @@ public class OpenAiModelServiceImpl implements AiModelService{
   @Override
   public void deleteConversation(String conversationId) {
 
+  }
+
+  @Override
+  public List<Message> getConversation(String conversationId) {
+    return List.of();
   }
 
   @Override
