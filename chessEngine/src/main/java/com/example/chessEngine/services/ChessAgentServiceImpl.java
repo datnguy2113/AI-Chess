@@ -17,23 +17,20 @@ import java.util.Map;
 @Service
 public class ChessAgentServiceImpl implements ChessAgentService{
 
-    private final ChatClient openAiChatClient;
+    private final AiModelService openAiModelservice;
     private final Map<String, Agent> blackAgents = new HashMap<>();
     private final Map<String, Agent> whiteAgents = new HashMap<>();
 
 
-    public ChessAgentServiceImpl(OpenAiChatModel openAiChatModel) {
-      ChatMemory openAiChatMemory = MessageWindowChatMemory.builder().maxMessages(100).build();
-      this.openAiChatClient = ChatClient.builder(openAiChatModel)
-          .defaultAdvisors(MessageChatMemoryAdvisor.builder(openAiChatMemory).build())
-          .build();
+    public ChessAgentServiceImpl(AiModelService aiModelService) {
+      this.openAiModelservice = aiModelService;
 
       this.blackAgents.put(AgentName.RANDOM, new RandomAgent(AgentName.RANDOM, true));
-      this.blackAgents.put(AgentName.CHATGPT, new ChatGptAgent(AgentName.CHATGPT, openAiChatClient, true));
+      this.blackAgents.put(AgentName.CHATGPT, new ChatGptAgent(AgentName.CHATGPT, aiModelService, true));
       this.blackAgents.put(AgentName.ALPHA_BETA, new AlphaBetaAgent(AgentName.ALPHA_BETA, true));
 
       this.whiteAgents.put(AgentName.RANDOM, new RandomAgent(AgentName.RANDOM, false));
-      this.whiteAgents.put(AgentName.CHATGPT, new ChatGptAgent(AgentName.CHATGPT, openAiChatClient, false));
+      this.whiteAgents.put(AgentName.CHATGPT, new ChatGptAgent(AgentName.CHATGPT, aiModelService, false));
       this.whiteAgents.put(AgentName.ALPHA_BETA, new AlphaBetaAgent(AgentName.ALPHA_BETA, false));
 
     }

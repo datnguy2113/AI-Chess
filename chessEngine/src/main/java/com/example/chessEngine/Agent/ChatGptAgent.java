@@ -1,6 +1,7 @@
 package com.example.chessEngine.Agent;
 
 import com.example.chessEngine.ChessLogic.Board;
+import com.example.chessEngine.services.AiModelService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -9,12 +10,12 @@ import org.springframework.ai.chat.prompt.PromptTemplate;
 import java.util.Map;
 
 public class ChatGptAgent extends Agent{
-  private final ChatClient chatGptChatClient;
+  private final AiModelService aiModelService;
 
-  public ChatGptAgent(String name, ChatClient chatGptChatClient, boolean isMyPieceBlack) {
+  public ChatGptAgent(String name, AiModelService aiModelService, boolean isMyPieceBlack) {
     super.name = name;
     super.myPieceIsBlack = isMyPieceBlack;
-    this.chatGptChatClient = chatGptChatClient;
+    this.aiModelService = aiModelService;
   }
 
   @Override
@@ -27,7 +28,7 @@ public class ChatGptAgent extends Agent{
     ));
     while (true) {
       try {
-        String response = this.chatGptChatClient
+        String response = this.aiModelService.getChatClient()
             .prompt(prompt)
             .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, conversationId))
             .call().content();
@@ -55,7 +56,7 @@ public class ChatGptAgent extends Agent{
     ));
     while (true) {
       try {
-        String response = this.chatGptChatClient
+        String response = this.aiModelService.getChatClient()
             .prompt(prompt)
             .call().content();
         String[] moves = response.split(",");
