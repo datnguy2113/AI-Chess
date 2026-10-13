@@ -28,6 +28,6 @@ public class OpenAiModelServiceImpl implements AiModelService{
 
   @Override
   public ChatClient getChatClient() {
-    return null;
+    return this.openAiChatClient;
   }
 }
