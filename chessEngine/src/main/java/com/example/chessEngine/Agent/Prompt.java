@@ -1,5 +1,9 @@
 package com.example.chessEngine.Agent;
 
+import com.example.chessEngine.services.AiModelService;
+
+import java.util.List;
+
 public class Prompt {
   public static String text = """
         You are a chess engine assistant.
@@ -32,6 +36,7 @@ public class Prompt {
         
         Do not include any other text, punctuation, explanation, or formatting — only the four numbers separated by commas. 
    """;
+
   public static String shortText = """
       Board (8x8 grid, row 0 = top):
       {board}
@@ -43,4 +48,8 @@ public class Prompt {
       
       Respond with only the move: from_row,from_col,to_row,to_col
    """;
+
+  public static String getPrompt(AiModelService aiModelService, String conversationId) {
+    return (aiModelService.getConversationLength(conversationId) > 1 ? shortText : text);
+  }
 }
