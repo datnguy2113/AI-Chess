@@ -20,7 +20,7 @@ public class ChatGptAgent extends Agent{
 
   @Override
   public int[] makeMove(Board board, String conversationId) {
-    String template = com.example.chessEngine.Agent.Prompt.text;
+    String template = com.example.chessEngine.Agent.Prompt.getPrompt(this.aiModelService, conversationId);
     PromptTemplate promptTemplate = new PromptTemplate(template);
     Prompt prompt = promptTemplate.create(Map.of("board", board.getFen(),
         "side", this.isMyPieceIsBlack() ? "Black" : "White",
