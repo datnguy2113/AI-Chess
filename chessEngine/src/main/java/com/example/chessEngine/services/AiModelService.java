@@ -8,5 +8,6 @@ import java.util.List;
 public interface AiModelService {
   void deleteConversation(String conversationId);
   List<Message> getConversation(String conversationId);
+  int getConversationLength(String conversationId);
   ChatClient getChatClient();
 }
