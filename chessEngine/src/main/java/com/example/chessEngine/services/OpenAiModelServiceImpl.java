@@ -5,9 +5,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AiModelServiceImpl implements AiModelService{
-
-
+public class OpenAiModelServiceImpl implements AiModelService{
 
 
   @Override
