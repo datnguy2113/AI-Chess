@@ -31,7 +31,13 @@ public class OpenAiModelServiceImpl implements AiModelService{
 
   @Override
   public List<Message> getConversation(String conversationId) {
-    return List.of();
+    List<Message> messages = this.memory.get(conversationId);
+    return messages;
+  }
+
+  @Override
+  public int getConversationLength(String conversationId) {
+    return this.memory.get(conversationId).size();
   }
 
   @Override
