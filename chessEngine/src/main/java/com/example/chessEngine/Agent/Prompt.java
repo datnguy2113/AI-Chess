@@ -32,4 +32,15 @@ public class Prompt {
         
         Do not include any other text, punctuation, explanation, or formatting — only the four numbers separated by commas. 
    """;
+  public static String shortText = """
+      Board (8x8 grid, row 0 = top):
+      {board}
+      
+      Side to move: {side}
+      
+      Legal moves (choose exactly one):
+      {legalMoves}
+      
+      Respond with only the move: from_row,from_col,to_row,to_col
+   """;
 }
